@@ -71,3 +71,18 @@ a {
 .card-header {
   color: whitesmoke;
 }
+
+#link {
+  font-size:x-small;
+  padding: 50px 75px;
+  opacity: 60%;
+}
+
+a {
+  text-decoration: underline;
+}
+
+a:hover {
+  color:black;
+  opacity: 80%;
+}
