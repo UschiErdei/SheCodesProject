@@ -45,11 +45,16 @@ h3 {
 
 #units {
   font-size: 50px;
-  text-decoration: none;
 }
+
 a {
-  text-decoration: none;
   color: whitesmoke;
+} 
+
+a.active {
+  color: whitesmoke;
+  cursor: default;
+  text-decoration: none;
 }
 
 .today {

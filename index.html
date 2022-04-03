@@ -21,7 +21,7 @@
     <div class="container">
       <br />
       <form class="Submit" >
-        <input type="text" placeholder="🔎 Search" id="submit"/>
+        <input type="text" placeholder="🔎 Search" id="submit" autocomplete= "off"/>
       </form>
       <br />
       <button id="currentLocation">I'm here 📍</button>
@@ -29,8 +29,8 @@
       <h2>February 13, 2022
       </h2>
       <h3>
-        <span class="currentTemp" id="currentTemp"></span>
-        <span id="units">°C</span>  
+        <span class="temperature" id="temperature"></span>
+        <span id="units"> <a href="#" id="celsius-link" class="active">°C </a> | <a href="#" id="fahrenheit-link">°F</a></span> 
       </h3>
       <p>
         <img src="" alt="" id="currentEmoji" class="currentEmoji">
