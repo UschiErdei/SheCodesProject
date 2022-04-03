@@ -71,7 +71,13 @@ function displayWeather(response) {
   degreesCelsius.innerHTML = degrees;
 
   let currentEmoji = document.querySelector("#currentEmoji");
-  currentEmoji.innerHTML = response.data.weather[0].description;
+  currentEmoji.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+
+  let weatherDescription = document.querySelector("#weatherDescription");
+  weatherDescription.innerHTML = response.data.weather[0].description;
 
   let humidity = response.data.main.humidity;
   let currentHumidity = document.querySelector("#humidity");
@@ -84,9 +90,7 @@ function displayWeather(response) {
 }
 
 function showPositionWeather(position) {
-  console.log(position.coords.latitude);
-  console.log(position.coords.longitude);
-  let apiKey = "9a88f3694f9360d3ea2018d1b74ae6d4";
+  let apiKey = "4d163b5c85b64ee446bec9ac490f23c9";
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
