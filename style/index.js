@@ -63,32 +63,50 @@ let celsiusTemp = null;
 let form = document.querySelector("form");
 form.addEventListener("submit", submitCity);
 
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
 
-  let days = ["Thu", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
   <div class="col-2">
       <div class="card text-dark bg-success mb-3 bg-opacity-25" style="max-width: 10rem;">
-      <div class="card-header">${day}</div>
+      <div class="card-header">${formatDay(forecastDay.dt)}</div>
       <div class="card-body">
-        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" class="card-img">
-      <h5 class="card-title">2°</h5>
+        <img src="http://openweathermap.org/img/wn/${
+          forecastDay.weather[0].icon
+        }@2x.png" alt="" class="card-img">
+      <h5 class="card-title">${Math.round(forecastDay.temp.day)}°</h5>
       </div>
       </div>
   </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  let apiKey = "4d163b5c85b64ee446bec9ac490f23c9";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayWeather(response) {
-  console.log(response.data);
   let homePosition = response.data.name;
   let homeCountry = response.data.sys.country;
   let h1 = document.querySelector("h1");
@@ -115,6 +133,8 @@ function displayWeather(response) {
   let wind = Math.round(response.data.wind.speed);
   let currentWind = document.querySelector("#wind");
   currentWind.innerHTML = wind;
+
+  getForecast(response.data.coord);
 }
 
 function showPositionWeather(position) {
@@ -155,5 +175,3 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemp);
-
-displayForecast();
