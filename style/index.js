@@ -47,6 +47,7 @@ let minutes = now.getMinutes();
 currentDate();
 
 function submitCity() {
+  event.preventDefault();
   let input = document.querySelector("#submit");
   let h1 = document.querySelector("h1");
   h1.innerHTML = input.value;
