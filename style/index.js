@@ -47,7 +47,6 @@ let minutes = now.getMinutes();
 currentDate();
 
 function submitCity() {
-  event.preventDefault();
   let input = document.querySelector("#submit");
   let h1 = document.querySelector("h1");
   h1.innerHTML = input.value;
@@ -150,28 +149,15 @@ function getPosition() {
   navigator.geolocation.getCurrentPosition(showPositionWeather);
 }
 
-function displayFahrenheitTemp() {
-  event.preventDefault;
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let temperatureElement = document.querySelector("#temperature");
-  let fahrenheitTemp = Math.round((celsiusTemp * 9) / 5 + 32);
-  temperatureElement.innerHTML = fahrenheitTemp;
-}
-
-function displayCelsiusTemp() {
-  event.preventDefault;
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemp);
-}
-
 let button = document.querySelector("button");
 button.addEventListener("click", getPosition);
 
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+function autoSubmitCity() {
+  let apiKey = "4d163b5c85b64ee446bec9ac490f23c9";
+  let city = "Palma de Mallorca";
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemp);
+  axios.get(url).then(displayWeather);
+}
+
+autoSubmitCity();

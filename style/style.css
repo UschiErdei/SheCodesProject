@@ -1,14 +1,13 @@
 body {
   background: radial-gradient(
     circle at 10% 20%,
-    rgb(98, 114, 128) 0%,
-    #343f33 90.1%);
+    rgb(25, 34, 27) 0%,
+    #646161 100%);
   font-family: "Roboto Mono", monospace;
   color: whitesmoke;
 }
 .weather-app-wrapper {
    max-width: 700px;
-  max-height: 700px;
   margin: 50px auto 50px;
 }
 .weather-app {
