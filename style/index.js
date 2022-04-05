@@ -63,6 +63,30 @@ let celsiusTemp = null;
 let form = document.querySelector("form");
 form.addEventListener("submit", submitCity);
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+
+  let days = ["Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+  <div class="col-2">
+      <div class="card text-dark bg-success mb-3 bg-opacity-25" style="max-width: 10rem;">
+      <div class="card-header">${day}</div>
+      <div class="card-body">
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" class="card-img">
+      <h5 class="card-title">2°</h5>
+      </div>
+      </div>
+  </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayWeather(response) {
   console.log(response.data);
   let homePosition = response.data.name;
@@ -131,3 +155,5 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemp);
+
+displayForecast();
