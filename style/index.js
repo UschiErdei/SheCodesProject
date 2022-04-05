@@ -64,6 +64,7 @@ let form = document.querySelector("form");
 form.addEventListener("submit", submitCity);
 
 function displayWeather(response) {
+  console.log(response.data);
   let homePosition = response.data.name;
   let homeCountry = response.data.sys.country;
   let h1 = document.querySelector("h1");

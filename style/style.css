@@ -2,18 +2,27 @@ body {
   background: radial-gradient(
     circle at 10% 20%,
     rgb(98, 114, 128) 0%,
-    rgb(52, 63, 51) 90.1%
-  );
+    #343f33 90.1%);
   font-family: "Roboto Mono", monospace;
   color: whitesmoke;
 }
+.weather-app-wrapper {
+   max-width: 700px;
+  max-height: 700px;
+  margin: 50px auto 50px;
+}
+.weather-app {
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid;
+  border-radius: 5px
+}
+
 button {
   color:whitesmoke;
   background-color: #b8a67d;
   border: 1px solid grey;
   border-radius: 2em 1em 4em / 0.5em 3em;
-  float: left;
-  margin-top: 50px;
   padding: 12px 20px;
   transition: ease-in-out 0.3s;
 }
@@ -25,26 +34,31 @@ button:hover {
   opacity: 0.8
 }
 form {
-  position: fixed;
-  right: 40px;
+  float:right;
 }
+
 h1 {
-  padding-top: 80px;
-  margin-top: 80px;
+  font-size: 20px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 h2 {
-  font-size: 19px;
+  font-size: 15px;
   font-weight: 400;
 }
 h3 {
-  font-size: 90px;
+  font-size: 30px;
   text-align: right;
   margin-right: 150px;
-  padding: 50px 0 50px 0;
+  padding: 20px 0 0 0;
+}
+
+p {
+  margin: 0;
 }
 
 #units {
-  font-size: 50px;
+  font-size: 30px;
 }
 
 a {
@@ -70,16 +84,23 @@ a.active {
 .col-2 {
   text-align: center;
 }
-.card-text {
+
+.card-img {
+  display: block;
+}
+.card-title {
   color: whitesmoke;
+  opacity: 0.9;
+  font-weight: lighter;
+  font-size: smaller;
 }
 .card-header {
   color: whitesmoke;
 }
 
+
 #link {
   font-size:x-small;
-  padding: 50px 75px;
   opacity: 60%;
 }
 
